@@ -1,7 +1,7 @@
 
 // smooth scroll
-$(document).ready(function(){
-    $(".navbar .nav-link").on('click', function(event) {
+$(document).ready(function () {
+    $(".navbar .nav-link").on('click', function (event) {
 
         if (this.hash !== "") {
 
@@ -11,15 +11,15 @@ $(document).ready(function(){
 
             $('html, body').animate({
                 scrollTop: $(hash).offset().top
-            }, 700, function(){
+            }, 700, function () {
                 window.location.hash = hash;
             });
-        } 
+        }
     });
 });
 
 // navbar toggle
-$('#nav-toggle').click(function(){
+$('#nav-toggle').click(function () {
     $(this).toggleClass('is-active')
     $('ul.nav').toggleClass('show');
 });
@@ -57,3 +57,15 @@ hireMeButton.addEventListener('click', (event) => {
 
     window.location.href = updatedLink;
 });
+
+document.addEventListener("mousemove", (event) => {
+    const ghostElements = document.querySelectorAll(".ghost");
+    const scrollX = window.scrollX || window.pageXOffset; // Get horizontal scroll position
+    const scrollY = window.scrollY || window.pageYOffset; // Get vertical scroll position
+
+    for (const ghost of ghostElements) {
+        ghost.style.left = event.clientX + scrollX + "px"; // Adjust for scroll
+        ghost.style.top = event.clientY + scrollY + "px";  // Adjust for scroll
+    }
+});
+
